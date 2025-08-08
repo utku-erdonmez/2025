@@ -1,0 +1,16 @@
+import requests
+with open("shattered-1.pdf","rb") as f1, open("shattered-2.pdf","rb") as f2:
+    data = {
+    "username": f1.read(),
+    "pwd": f2.read()
+}
+
+url = "http://verbal-sleep.picoctf.net:53626/impossibleLogin.php"
+proxies_object = {
+    "http": "http://127.0.0.1:8080",
+    "https": "http://127.0.0.1:8080"
+}
+response = requests.post(url, data=data,proxies=proxies_object)
+
+print("Status code:", response.status_code)
+print("Response:", response.text)
